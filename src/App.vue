@@ -119,62 +119,6 @@ header > h2 {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-.movies-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0px 8px;
-  padding-top: 100px;
-}
-.movie {
-  max-width: 50%;
-  display: flex;
-
-  padding: 16px 8px;
-}
-.movie > div {
-  background-color: #f1f1f1;
-  margin: 40px;
-  padding: 20px;
-  font-size: 30px;
-}
-.movie-link {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.product-image {
-  position: relative;
-  display: block;
-
-  display: block;
-  width: 100%;
-  height: 275px;
-  object-fit: cover;
-}
-
-.detail {
-  background-color: #496583;
-  padding: 16px 8px;
-  flex: 1 1 100%;
-  border-radius: 0px 0px 8px 8px;
-}
-
-.type {
-  position: absolute;
-  padding: 8px 16px;
-  background-color: #42b883;
-  color: #fff;
-  bottom: 16px;
-  left: 0px;
-  text-transform: capitalize;
-}
-
-.year {
-  color: #aaa;
-  font-size: 14px;
-}
-
 h3 {
   color: #141414;
   font-weight: 600;
