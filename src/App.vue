@@ -5,6 +5,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
+      <h2 class="header-title">OMDB Search</h2>
       <form @submit.prevent="SearchMovies()" class="search-box">
         <h3>Search a movie</h3>
         <input
@@ -75,7 +76,9 @@ header {
   outline: #111111;
   box-shadow: 0 0 15px 0 rgb(58, 57, 57);
 }
-
+header > h2 {
+  padding-left: 150px;
+}
 .search-box {
   display: flex;
   position: absolute;
