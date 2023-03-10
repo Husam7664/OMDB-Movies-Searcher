@@ -23,10 +23,10 @@ import axios from "axios";
 import { defineComponent, watch } from "vue";
 import { ref } from "vue";
 
-import env from "@/env";
 import MoviesList from "../components/movies/movies-list.vue";
 import Welcome from "../components/welcome.vue";
 import Notfound from "../components/notfound.vue";
+import { GetAllSearchMovies } from "../services/movieService";
 
 export default defineComponent({
   components: {
@@ -44,22 +44,33 @@ export default defineComponent({
     //   console.log(val);
     //   notFoundValid.value = false;
     // });
-    const SearchMovies = () => {
+    const SearchMovies = async () => {
       if (search.value != "") {
         welcomeValid.value = false;
-        axios
-          // .get(`http://www.omdbapi.com/?apikey=5822391f&s=${search.value}`)
-          .get(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
+        // axios
+        //   // .get(`http://www.omdbapi.com/?apikey=5822391f&s=${search.value}`)
+        //   .get(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
 
-          .then((res) => {
-            movies.value = res.data.Search;
-            search.value = "";
-            if (res.data.Response == "False") {
-              notFoundValid.value = true;
-            } else {
-              notFoundValid.value = false;
-            }
-          });
+        //   .then((res) => {
+        //     movies.value = res.data.Search;
+        //     search.value = "";
+        //     if (res.data.Response == "False") {
+        //       notFoundValid.value = true;
+        //     } else {
+        //       notFoundValid.value = false;
+        //     }
+        //   });
+
+        const res: any = await GetAllSearchMovies(search.value);
+        console.log("movieserach", res.data);
+
+        movies.value = res.data.Search;
+        search.value = "";
+        if (res.data.Response == "False") {
+          notFoundValid.value = true;
+        } else {
+          notFoundValid.value = false;
+        }
       }
       console.log(notFoundValid);
     };

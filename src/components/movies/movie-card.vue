@@ -33,12 +33,12 @@
 import { ref, defineComponent } from "vue";
 import { useOMDBStore } from "../../stores/store";
 import axios from "axios";
-import env from "@/env";
+import { GetMovieDetail } from "../../services/movieService";
 
 export default defineComponent({
   props: {
     movie: {
-      type: String,
+      type: any,
       required: true,
     },
     id: {
@@ -55,14 +55,16 @@ export default defineComponent({
 
     const movieDeatilHandler = async () => {
       OMDBStroe.addData(id);
-      await axios
-        .get(`http://www.omdbapi.com/?apikey=${env.apikey}&i=${id}&plot`)
+      // await axios
+      //   .get(`http://www.omdbapi.com/?apikey=${env.apikey}&i=${id}&plot`)
 
-        .then((response) => {
-          console.log(response.data);
+      //   .then((response) => {
+      //     console.log(response.data);
 
-          movieDeatil.value = response.data;
-        });
+      //     movieDeatil.value = response.data;
+      //   });
+      const res: any = await GetMovieDetail(id);
+      movieDeatil.value = res.data;
       console.log(movie);
     };
 
