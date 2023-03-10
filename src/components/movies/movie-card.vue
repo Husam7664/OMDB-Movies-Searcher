@@ -1,7 +1,7 @@
 <template>
   <img class="product-image" :src="movie.Poster" alt="Movie Poster" />
 
-  <div class="detail-view" v-if="movieDeatil">
+  <div class="detail-view" v-if="movieDeatil && id == OMDBStroe.movieId">
     <h3>{{ movie.Title }}</h3>
     <div>
       <p>Plot: {{ movieDeatil.Plot }}</p>
@@ -24,9 +24,10 @@
 </template>
   
 <script lang="ts">
-import { defineComponent } from "vue";
-import { ref } from "vue";
+import { ref, defineComponent } from "vue";
+import { useOMDBStore } from "../../stores/counter";
 import axios from "axios";
+
 export default defineComponent({
   props: {
     movie: {
@@ -40,10 +41,13 @@ export default defineComponent({
   },
 
   setup(props) {
+    const OMDBStroe = useOMDBStore();
     const movie = props.movie;
     const id = props.id;
     const movieDeatil = ref();
+
     const movieDeatilHandler = async () => {
+      OMDBStroe.addData(id);
       await axios
         .get(`http://www.omdbapi.com/?apikey=5822391f&i=${id}&plot=full`)
 
@@ -55,11 +59,12 @@ export default defineComponent({
       console.log(movie);
     };
 
-    // const onMethods = { moviedetail };
     return {
       movieDeatil,
       movieDeatilHandler,
       movie,
+      id,
+      OMDBStroe,
     };
   },
 });

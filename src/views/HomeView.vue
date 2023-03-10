@@ -2,7 +2,12 @@
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <h1>Home view</h1>
 </template>
+
+<style>
+h1 {
+  padding-top: 100px;
+  color: red;
+}
+</style>

@@ -17,7 +17,7 @@
         <input class="submit-btn" type="submit" value="Search" />
       </form>
     </header>
-
+    <!-- <h1>{{ counterStore.counter }}</h1> -->
     <MoviesList :movies="movies" />
   </div>
 
@@ -29,6 +29,7 @@ import { RouterLink, RouterView } from "vue-router";
 import axios from "axios";
 import { defineComponent } from "vue";
 import { ref } from "vue";
+
 // import env from "@/env.js";
 
 import MoviesList from "./components/movies/movies-list.vue";
