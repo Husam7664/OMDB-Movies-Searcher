@@ -142,7 +142,8 @@ header {
 
 @media only screen and (max-width: 900px) {
   .header-title {
-    padding-left: 10px;
+    padding-left: 20px;
+    font-size: 24px;
   }
   .serachTitle {
     display: none !important;
@@ -150,7 +151,7 @@ header {
 
   .search-box {
     display: flex;
-    left: 235px;
+    left: 280px;
     align-items: right;
   }
   .search-input {
@@ -159,10 +160,60 @@ header {
     outline: none;
     border: none;
     border-bottom: 1px solid #b5d6f7;
-    width: 200px;
+    width: 150px;
     font-size: 16px;
     transition: 0.4s;
     height: 30px;
+  }
+  .submit-btn {
+    width: 100%;
+    width: 100px;
+    background-color: #1637f5;
+    height: 35px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    margin-left: 15px;
+    transition: 0.4s;
+    border-radius: 3px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .header-title {
+    padding-left: 10px;
+    font-size: 20px;
+  }
+  .serachTitle {
+    display: none !important;
+  }
+
+  .search-box {
+    display: flex;
+    left: 200px;
+    align-items: right;
+  }
+  .search-input {
+    appearance: none;
+    background: #ecf5ff;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #b5d6f7;
+    width: 100px;
+    font-size: 16px;
+    transition: 0.4s;
+    height: 30px;
+  }
+  .submit-btn {
+    width: 100%;
+    width: 100px;
+    background-color: #1637f5;
+    height: 35px;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    margin-left: 15px;
+    transition: 0.4s;
+    border-radius: 3px;
   }
 }
 </style>

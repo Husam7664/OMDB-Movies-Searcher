@@ -136,8 +136,44 @@ hr.devider {
   padding-left: 10px;
   padding-right: 150px;
 }
-.detail-view {
-  width: 300px;
+
+@media only screen and (max-width: 900px) {
+  .detail-view {
+    width: 300px;
+  }
+  .product-image {
+    width: 200px;
+    height: 275px;
+  }
+  .detail {
+    width: 300px;
+  }
+
+  .year {
+    color: #aaa;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 150px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .detail-view {
+    width: 225px;
+  }
+  .product-image {
+    width: 150px;
+    height: 275px;
+  }
+  .detail {
+    width: 225px;
+  }
+
+  .year {
+    color: #aaa;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-right: 100px;
+  }
 }
 </style>
   
