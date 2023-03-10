@@ -4,8 +4,14 @@
   <div class="detail-view" v-if="movieDeatil && id == OMDBStroe.movieId">
     <h3>{{ movie.Title }}</h3>
     <div>
-      <p>Plot: {{ movieDeatil.Plot }}</p>
-      <p>Actors: {{ movieDeatil.Actors }}</p>
+      <span>Plot:</span>
+      <p>{{ movieDeatil.Plot }}</p>
+      <span>Actors:</span>
+      <p>{{ movieDeatil.Actors }}</p>
+      <span>Ratings:</span>
+      <div v-for="rating in movieDeatil.Ratings">
+        <p>-{{ rating.Source }}: {{ rating.Value }}</p>
+      </div>
     </div>
     <hr class="devider" />
     <div class="details-btn-div">
@@ -25,8 +31,9 @@
   
 <script lang="ts">
 import { ref, defineComponent } from "vue";
-import { useOMDBStore } from "../../stores/counter";
+import { useOMDBStore } from "../../stores/store";
 import axios from "axios";
+import env from "@/env";
 
 export default defineComponent({
   props: {
@@ -49,7 +56,7 @@ export default defineComponent({
     const movieDeatilHandler = async () => {
       OMDBStroe.addData(id);
       await axios
-        .get(`http://www.omdbapi.com/?apikey=5822391f&i=${id}&plot=full`)
+        .get(`http://www.omdbapi.com/?apikey=${env.apikey}&i=${id}&plot`)
 
         .then((response) => {
           console.log(response.data);
@@ -98,6 +105,9 @@ export default defineComponent({
 .detail-view {
   width: 815px;
 }
+.detail-view > div > span {
+  font-size: 13px;
+}
 hr.devider {
   border-top: 1px solid #bbb;
 }
@@ -106,6 +116,7 @@ hr.devider {
 }
 .details-btn-div {
   display: flex;
+  height: 45px;
   /* flex-direction: row; */
 }
 .details-btn {
