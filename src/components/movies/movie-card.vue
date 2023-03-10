@@ -24,7 +24,13 @@
     <hr class="devider" />
     <div class="details-btn-div">
       <p class="year">{{ movie.Year }}</p>
-      <button class="details-btn" @click="movieDeatilHandler()">Details</button>
+      <button
+        class="details-btn"
+        @click="movieDeatilHandler()"
+        style="cursor: pointer"
+      >
+        Details
+      </button>
     </div>
   </div>
 </template>
@@ -103,9 +109,11 @@ export default defineComponent({
 }
 .detail {
   width: 300px;
+  box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
 }
 .detail-view {
   width: 815px;
+  box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
 }
 .detail-view > div > span {
   font-size: 13px;
@@ -142,6 +150,7 @@ hr.devider {
 @media only screen and (max-width: 900px) {
   .detail-view {
     width: 300px;
+    box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
   }
   .product-image {
     width: 225px;
@@ -149,6 +158,7 @@ hr.devider {
   }
   .detail {
     width: 300px;
+    box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
   }
 
   .year {
@@ -161,6 +171,7 @@ hr.devider {
 @media only screen and (max-width: 500px) {
   .detail-view {
     width: 225px;
+    box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
   }
   .product-image {
     width: 150px;
@@ -168,6 +179,7 @@ hr.devider {
   }
   .detail {
     width: 225px;
+    box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
   }
 
   .year {

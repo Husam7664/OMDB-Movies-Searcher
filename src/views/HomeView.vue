@@ -9,7 +9,12 @@
       <form @submit.prevent="SearchMovies()" class="search-box">
         <h3 class="serachTitle">Search a movie</h3>
         <input type="text" v-model="search" class="search-input" />
-        <input class="submit-btn" type="submit" value="Search" />
+        <input
+          class="submit-btn"
+          type="submit"
+          value="Search"
+          style="cursor: pointer"
+        />
       </form>
     </header>
     <Welcome v-if="welcomeValid" />
@@ -96,10 +101,10 @@ header {
   display: flex;
   align-items: center;
   outline: #111111;
-  box-shadow: 0 0 15px 0 rgb(58, 57, 57);
+  box-shadow: 0 0 15px 0 rgb(117, 116, 116);
 }
 .header-title {
-  padding-left: 165px;
+  padding-left: 167px;
   font-size: 24px;
   font-weight: 450;
   color: #141414;
