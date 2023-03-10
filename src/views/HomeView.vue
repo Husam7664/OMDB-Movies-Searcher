@@ -12,30 +12,41 @@
         <input class="submit-btn" type="submit" value="Search" />
       </form>
     </header>
-
+    <Welcome v-if="welcomeValid" />
+    <Notfound v-if="notFoundValid" />
     <MoviesList :movies="movies" />
   </div>
 </template>
 
 <script lang="ts">
 import axios from "axios";
-import { defineComponent } from "vue";
+import { defineComponent, watch } from "vue";
 import { ref } from "vue";
 
 import env from "@/env";
-
 import MoviesList from "../components/movies/movies-list.vue";
+import Welcome from "../components/welcome.vue";
+import Notfound from "../components/notfound.vue";
 
 export default defineComponent({
   components: {
     MoviesList,
+    Welcome,
+    Notfound,
   },
   setup() {
     const search = ref("");
     const movies = ref([]);
+    const welcomeValid = ref(true);
+    const notFoundValid = ref(false);
 
+    // watch(search, (val) => {
+    //   console.log(val);
+    //   notFoundValid.value = false;
+    // });
     const SearchMovies = () => {
       if (search.value != "") {
+        welcomeValid.value = false;
         axios
           // .get(`http://www.omdbapi.com/?apikey=5822391f&s=${search.value}`)
           .get(`http://www.omdbapi.com/?apikey=${env.apikey}&s=${search.value}`)
@@ -43,15 +54,22 @@ export default defineComponent({
           .then((res) => {
             movies.value = res.data.Search;
             search.value = "";
-            console.log(movies);
+            if (res.data.Response == "False") {
+              notFoundValid.value = true;
+            } else {
+              notFoundValid.value = false;
+            }
           });
       }
+      console.log(notFoundValid);
     };
 
     return {
       search,
       movies,
       SearchMovies,
+      welcomeValid,
+      notFoundValid,
     };
   },
 });
