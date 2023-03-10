@@ -38,7 +38,7 @@ import { GetMovieDetail } from "../../services/movieService";
 export default defineComponent({
   props: {
     movie: {
-      type: any,
+      type: String,
       required: true,
     },
     id: {
