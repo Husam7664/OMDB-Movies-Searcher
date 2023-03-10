@@ -5,7 +5,7 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav> -->
-      <h2 class="header-title">OMDB Search</h2>
+      <p class="header-title">OMDB Search</p>
       <form @submit.prevent="SearchMovies()" class="search-box">
         <h3 class="serachTitle">Search a movie</h3>
         <input type="text" v-model="search" class="search-input" />
@@ -88,13 +88,15 @@ header {
   box-shadow: 0 0 15px 0 rgb(58, 57, 57);
 }
 .header-title {
-  padding-left: 150px;
+  padding-left: 165px;
+  font-size: 24px;
+  font-weight: 450;
+  color: #141414;
 }
 .search-box {
   display: flex;
   position: absolute;
-  right: 200px;
-  align-items: center;
+  right: 170px;
 }
 .search-input {
   appearance: none;
@@ -116,6 +118,7 @@ header {
   color: #fff;
   text-transform: uppercase;
   border: none;
+  margin-left: 15px;
   transition: 0.4s;
   border-radius: 3px;
 }
@@ -136,22 +139,6 @@ header {
   font-size: 18px;
   width: 160px;
 }
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
 
 @media only screen and (max-width: 900px) {
   .header-title {
@@ -163,8 +150,19 @@ nav a:first-of-type {
 
   .search-box {
     display: flex;
-    left: 200px;
+    left: 235px;
     align-items: right;
+  }
+  .search-input {
+    appearance: none;
+    background: #ecf5ff;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #b5d6f7;
+    width: 200px;
+    font-size: 16px;
+    transition: 0.4s;
+    height: 30px;
   }
 }
 </style>

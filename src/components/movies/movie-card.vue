@@ -9,7 +9,7 @@
       <span>Actors:</span>
       <p>{{ movieDeatil.Actors }}</p>
       <span>Ratings:</span>
-      <div v-for="rating in movieDeatil.Ratings">
+      <div v-for="(rating, index) in movieDeatil.Ratings" :key="index">
         <p>-{{ rating.Source }}: {{ rating.Value }}</p>
       </div>
     </div>
@@ -135,6 +135,9 @@ hr.devider {
   font-size: 14px;
   padding-left: 10px;
   padding-right: 150px;
+}
+.detail-view {
+  width: 300px;
 }
 </style>
   
