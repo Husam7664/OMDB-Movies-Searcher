@@ -7,7 +7,7 @@
       </nav> -->
       <h2 class="header-title">OMDB Search</h2>
       <form @submit.prevent="SearchMovies()" class="search-box">
-        <h3>Search a movie</h3>
+        <h3 class="serachTitle">Search a movie</h3>
         <input
           type="text"
           placeholder="What are you looking for?"
@@ -77,7 +77,7 @@ header {
   outline: #111111;
   box-shadow: 0 0 15px 0 rgb(58, 57, 57);
 }
-header > h2 {
+.header-title {
   padding-left: 150px;
 }
 .search-box {
@@ -120,7 +120,7 @@ header > h2 {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
 }
 
-h3 {
+.serachTitle {
   color: #141414;
   font-weight: 600;
   font-size: 18px;
@@ -151,7 +151,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 800px) {
+@media only screen and (max-width: 900px) {
   /* header {
     background-color: rgb(235, 232, 227);
     position: fixed;
@@ -165,6 +165,18 @@ nav a:first-of-type {
     width: 50%;
   } */
 
+  .header-title {
+    padding-left: 10px;
+  }
+  .serachTitle {
+    display: none !important;
+  }
+
+  .search-box {
+    display: flex;
+    left: 200px;
+    align-items: right;
+  }
   .logo {
     margin: 0 2rem 0 0;
   }
