@@ -142,7 +142,7 @@ header {
 
 @media only screen and (max-width: 900px) {
   .header-title {
-    padding-left: 20px;
+    padding-left: 100px;
     font-size: 24px;
   }
   .serachTitle {
@@ -151,7 +151,7 @@ header {
 
   .search-box {
     display: flex;
-    left: 280px;
+    left: 400px;
     align-items: right;
   }
   .search-input {

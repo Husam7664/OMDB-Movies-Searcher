@@ -142,8 +142,8 @@ hr.devider {
     width: 300px;
   }
   .product-image {
-    width: 200px;
-    height: 275px;
+    width: 225px;
+    height: 300px;
   }
   .detail {
     width: 300px;
