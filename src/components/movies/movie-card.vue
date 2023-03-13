@@ -2,15 +2,17 @@
   <img class="product-image" :src="movie.Poster" alt="Movie Poster" />
 
   <div class="detail-view" v-if="movieDeatil && id == OMDBStroe.movieId">
-    <h3>{{ movie.Title }}</h3>
-    <div>
-      <span>Plot:</span>
-      <p>{{ movieDeatil.Plot }}</p>
-      <span>Actors:</span>
-      <p>{{ movieDeatil.Actors }}</p>
-      <span>Ratings:</span>
-      <div v-for="(rating, index) in movieDeatil.Ratings" :key="index">
-        <p>-{{ rating.Source }}: {{ rating.Value }}</p>
+    <div class="detail-desp">
+      <h3>{{ movie.Title }}</h3>
+      <div>
+        <span>Plot:</span>
+        <p>{{ movieDeatil.Plot }}</p>
+        <span>Actors:</span>
+        <p>{{ movieDeatil.Actors }}</p>
+        <span>Ratings:</span>
+        <div v-for="(rating, index) in movieDeatil.Ratings" :key="index">
+          <p>-{{ rating.Source }}: {{ rating.Value }}</p>
+        </div>
       </div>
     </div>
     <hr class="devider" />
@@ -34,17 +36,24 @@
     </div>
   </div>
 </template>
-  
+
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, onBeforeMount } from "vue";
 import { useOMDBStore } from "../../stores/store";
 import axios from "axios";
 import { GetMovieDetail } from "../../services/movieService";
+import type { PropType } from "vue";
+
+interface Movie {
+  Poster: string;
+  Title: string;
+  Year: string;
+}
 
 export default defineComponent({
   props: {
     movie: {
-      type: String,
+      type: Object as PropType<Movie>,
       required: true,
     },
     id: {
@@ -59,6 +68,12 @@ export default defineComponent({
     const id = props.id;
     const movieDeatil = ref();
 
+    onBeforeMount(async () => {
+      const res: any = await GetMovieDetail(id);
+      movieDeatil.value = res.data;
+      console.log(movie);
+    });
+
     const movieDeatilHandler = async () => {
       OMDBStroe.addData(id);
       // await axios
@@ -69,9 +84,10 @@ export default defineComponent({
 
       //     movieDeatil.value = response.data;
       //   });
-      const res: any = await GetMovieDetail(id);
-      movieDeatil.value = res.data;
-      console.log(movie);
+
+      // const res: any = await GetMovieDetail(id);
+      // movieDeatil.value = res.data;
+      // console.log(movie);
     };
 
     return {
@@ -84,8 +100,8 @@ export default defineComponent({
   },
 });
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .movies-list {
   display: flex;
   flex-wrap: wrap;
@@ -115,13 +131,25 @@ export default defineComponent({
   width: 815px;
   box-shadow: 1px 1px 1px 1px rgb(236, 236, 236);
 }
-.detail-view > div > span {
-  font-size: 13px;
+.detail-desp {
+  padding: 10px;
 }
+.detail-view > div > div > span {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(59, 58, 58);
+}
+/* .detail-view > div > div > p {
+  font-weight: 300;
+}
+.detail-view > div > div > div > p {
+  font-weight: 300;
+} */
 hr.devider {
   border-top: 1px solid #bbb;
 }
 .title {
+  padding-left: 10px;
   padding-bottom: 200px;
 }
 .details-btn-div {
@@ -190,4 +218,3 @@ hr.devider {
   }
 }
 </style>
-  
